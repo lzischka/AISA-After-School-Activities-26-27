@@ -72,15 +72,6 @@ img{max-width:100%}
 .topbar a{color:var(--sky);transition:opacity .2s}
 .topbar a:hover{opacity:.8}
 .topbar .contact span{margin-right:16px}
-.save-btn{
-  background:var(--orange);color:#fff;
-  border:none;border-radius:8px;
-  padding:7px 18px;font-size:.82rem;font-weight:800;
-  cursor:pointer;letter-spacing:.04em;
-  transition:transform .15s,box-shadow .15s;
-  font-family:'Montserrat',sans-serif;
-}
-.save-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(244,121,32,.5)}
 
 /* ═══════════════════════════════════════
    HERO
@@ -264,6 +255,14 @@ table.asa-table tr:hover td{background:#f6faff}
   padding:12px 18px;font-size:.82rem;color:#7a5a00;margin-top:12px;
   display:flex;gap:10px;align-items:flex-start;
 }
+.no-asa-box{
+  background:#e8f0ff;border:1px solid #a0b8f0;border-radius:12px;
+  padding:14px 20px;font-size:.85rem;color:#1a2a6e;margin-bottom:28px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.no-asa-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.no-asa-title{font-weight:800;font-size:.9rem;color:var(--navy);margin-bottom:6px}
+.no-asa-list{margin:0;padding-left:18px;line-height:1.9}
 
 /* ═══════════════════════════════════════
    ACTIVITY CARDS (directory)
@@ -400,6 +399,83 @@ footer strong{color:#fff}
 .dir-card{cursor:pointer}
 
 /* ═══════════════════════════════════════
+   LEO CHATBOT
+═══════════════════════════════════════ */
+#leo-btn{
+  position:fixed;bottom:28px;right:28px;z-index:3000;
+  width:62px;height:62px;border-radius:50%;
+  background:var(--navy);border:3px solid var(--orange);
+  box-shadow:0 6px 24px rgba(0,0,0,.28);
+  cursor:pointer;font-size:2rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+#leo-btn:hover{transform:scale(1.08);box-shadow:0 10px 32px rgba(0,0,0,.35)}
+#leo-bubble{
+  position:fixed;bottom:100px;right:28px;z-index:3000;
+  width:340px;max-height:520px;
+  background:#fff;border-radius:20px;
+  box-shadow:0 12px 48px rgba(10,42,110,.22);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:opacity .2s,transform .2s;
+  opacity:0;transform:translateY(20px) scale(.97);
+  pointer-events:none;
+}
+#leo-bubble.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+#leo-head{
+  background:var(--navy);color:#fff;
+  padding:14px 18px;display:flex;align-items:center;gap:12px;
+  flex-shrink:0;
+}
+#leo-head .leo-avatar{font-size:2rem;line-height:1}
+#leo-head .leo-info{flex:1}
+#leo-head .leo-name{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1rem}
+#leo-head .leo-status{font-size:.73rem;opacity:.75;margin-top:2px}
+#leo-close{
+  background:none;border:none;color:#fff;cursor:pointer;
+  font-size:1.2rem;opacity:.7;transition:opacity .15s;
+  font-family:'Montserrat',sans-serif;font-weight:900;
+}
+#leo-close:hover{opacity:1}
+#leo-messages{
+  flex:1;overflow-y:auto;padding:16px 14px;
+  display:flex;flex-direction:column;gap:10px;
+  scroll-behavior:smooth;
+}
+.leo-msg{max-width:85%;font-size:.83rem;line-height:1.5;border-radius:14px;padding:9px 13px}
+.leo-msg.leo{background:var(--light);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}
+.leo-msg.user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.leo-msg-row{display:flex;align-items:flex-end;gap:7px}
+.leo-msg-row .leo-av{font-size:1.3rem;flex-shrink:0}
+#leo-footer{
+  padding:10px 12px;border-top:1px solid #e8eef8;
+  display:flex;gap:8px;flex-shrink:0;background:#fff;
+}
+#leo-input{
+  flex:1;border:2px solid var(--light);border-radius:10px;
+  padding:8px 12px;font-family:'Nunito',sans-serif;font-size:.83rem;
+  outline:none;transition:border-color .2s;
+}
+#leo-input:focus{border-color:var(--blue)}
+#leo-send{
+  background:var(--navy);color:#fff;border:none;border-radius:10px;
+  padding:8px 14px;cursor:pointer;font-size:1rem;
+  transition:background .15s;
+}
+#leo-send:hover{background:var(--blue)}
+.leo-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.leo-chip{
+  background:var(--light);border:1px solid #c8d8f0;border-radius:20px;
+  padding:4px 12px;font-size:.75rem;font-weight:700;color:var(--navy);
+  cursor:pointer;transition:background .15s;
+}
+.leo-chip:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(max-width:400px){
+  #leo-bubble{width:calc(100vw - 20px);right:10px}
+  #leo-btn{right:16px;bottom:16px}
+}
+
+/* ═══════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════ */
 @media(max-width:600px){
@@ -421,7 +497,6 @@ footer strong{color:#fff}
     <span>🌐 <a href="https://www.aisa.sch.ae/" target="_blank">aisa.sch.ae</a></span>
     <span>📧 <a href="mailto:attendance@aisa.sch.ae">attendance@aisa.sch.ae</a></span>
   </div>
-  <button class="save-btn" onclick="window.print()">🖨️ Save as PDF</button>
 </div>
 
 <!-- ═══ HERO ═══ -->
@@ -461,6 +536,7 @@ footer strong{color:#fff}
   <a href="#spring">Spring Term</a>
   <a href="#directory">Directory</a>
   <a href="#faqs">FAQs</a>
+  <a href="#register">Register &amp; Calendars</a>
 </nav>
 
 <!-- ═══════════════════════════════════════
@@ -600,6 +676,18 @@ footer strong{color:#fff}
     <h2 class="section-title">🍂 <span>Autumn Term</span> ASAs</h2>
     <div class="divider"></div>
 
+    <!-- No ASA Dates -->
+    <div class="no-asa-box">
+      <div class="no-asa-icon">📅</div>
+      <div>
+        <div class="no-asa-title">No ASAs on the Following Dates</div>
+        <ul class="no-asa-list">
+          <li><strong>Oct. 19 &amp; 20</strong> — Professional Development (No School for Students)</li>
+          <li><strong>Nov. 9</strong> — Parent-Teacher Conferences</li>
+        </ul>
+      </div>
+    </div>
+
     <!-- KG1 -->
     <div class="term-section">
       <div class="term-title">KG1 <span class="term-badge">Autumn</span></div>
@@ -663,6 +751,7 @@ footer strong{color:#fff}
           <tr data-act="act-drawing"><td>✍️ Drawing &amp; Coloring Practice</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-playground"><td>🛝 Playground Games</td><td>Thursday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-intro-chess"><td>♟️ Intro to Chess</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+          <tr data-act="act-stuco"><td>🗳️ Student Council (StuCo Club)</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <!-- ADD MORE G3-G5 AUTUMN ACTIVITIES HERE -->
         </tbody>
       </table>
@@ -675,19 +764,11 @@ footer strong{color:#fff}
       <table class="asa-table">
         <thead><tr><th>Activity</th><th>Day</th><th>Category</th><th>Fee</th></tr></thead>
         <tbody>
-          <tr data-act="act-piano"><td>🎹 Piano (Notes &amp; Chords)</td><td>Monday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-paid">Paid</span></td></tr>
           <tr data-act="act-football"><td>⚽️ Football Training (PASS)</td><td>Monday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-paid">Paid</span></td></tr>
           <tr data-act="act-quran-elem"><td>🌙 Quran Club</td><td>Tuesday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
-          <tr data-act="act-equestrians"><td>🏇 Equestrian Club</td><td>Tuesday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-paid">Paid</span></td></tr>
           <tr data-act="act-basketball"><td>🏀 Basketball Training (GameTime)</td><td>Tuesday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-paid">Paid</span></td></tr>
-          <tr data-act="act-number-ninjas"><td>➕ Math Ninjas</td><td>Tuesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+          <tr data-act="act-arabic-hair-dance"><td>👯‍♀️ Arabic Hair Dance Club (Girls Only)</td><td>Tuesday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-bowling"><td>🎳 Bowling</td><td>Wednesday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-paid">Paid</span></td></tr>
-          <tr data-act="act-storytelling"><td>📖 Storytelling Time</td><td>Wednesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
-          <tr data-act="act-relax-color"><td>🖍️ Relax &amp; Color Journaling</td><td>Wednesday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
-          <tr data-act="act-ballet"><td>🩰 Ballet (BodyTree)</td><td>Wednesday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-paid">Paid</span></td></tr>
-          <tr data-act="act-power-up"><td>🔋 Power-Up with Affirmations</td><td>Thursday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
-          <tr data-act="act-drawing"><td>✍️ Drawing &amp; Coloring Practice</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
-          <tr data-act="act-playground"><td>🛝 Playground Games</td><td>Thursday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-intro-chess"><td>♟️ Intro to Chess</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
           <!-- ADD MORE MS/HS AUTUMN ACTIVITIES HERE -->
         </tbody>
@@ -771,6 +852,7 @@ footer strong{color:#fff}
         <tr data-act="act-playground"><td>🛝 Playground Games</td><td>Thursday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-intro-chess"><td>♟️ Intro to Chess</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-early-sprouts"><td>🌎 Gardening Club</td><td>Thursday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
+        <tr data-act="act-arabic-spelling-elem"><td>🐝 Arabic Spelling Bee</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <!-- ADD MORE G3-G5 WINTER ACTIVITIES HERE -->
       </tbody>
     </table>
@@ -791,15 +873,18 @@ footer strong{color:#fff}
         <tr data-act="act-ibdp-business"><td>📊 IBDP Business Management</td><td>Tuesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-ib-stem"><td>🔬 IB STEM Support Club</td><td>Tuesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-sustainability"><td>🌱 Sustainability Club</td><td>Tuesday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
+        <tr data-act="act-arabic-lang-ms"><td>🔤 Arabic Language Foundation Club (Middle School)</td><td>Tuesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-bowling"><td>🎳 Bowling</td><td>Wednesday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-paid">Paid</span></td></tr>
         <tr data-act="act-rubiks-ms"><td>🧩 Rubik's Cube Club</td><td>Wednesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-hip-hop"><td>💃 HipHop Dance Club</td><td>Wednesday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-sh-ib-english"><td>📝 Study Hall – IB English</td><td>Wednesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+        <tr data-act="act-arabic-lang-hs"><td>🔤 Arabic Language Foundation Club (High School)</td><td>Wednesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-greenhouse"><td>🌿 Greenhouse Care</td><td>Thursday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-chess-club-ms"><td>♟️ Chess Club</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-sh-academic-math"><td>📐 Study Hall – Academic Assistance (Math)</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-sh-am-diploma"><td>📘 Study Hall – American Diploma</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <tr data-act="act-stem-club"><td>🔬 STEM Club</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+        <tr data-act="act-arabic-spelling-mshs"><td>🐝 Arabic Spelling Bee</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
         <!-- ADD MORE MS/HS WINTER ACTIVITIES HERE -->
       </tbody>
     </table>
@@ -814,6 +899,17 @@ footer strong{color:#fff}
   <div class="section" style="padding-top:56px;padding-bottom:56px">
     <h2 class="section-title">🌸 <span>Spring Term</span> ASAs</h2>
     <div class="divider"></div>
+
+    <!-- No ASA Dates -->
+    <div class="no-asa-box">
+      <div class="no-asa-icon">📅</div>
+      <div>
+        <div class="no-asa-title">No ASAs on the Following Dates</div>
+        <ul class="no-asa-list">
+          <li><strong>May 3</strong> — Parent-Teacher Conferences</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- KG1 -->
     <div class="term-section">
@@ -849,6 +945,7 @@ footer strong{color:#fff}
           <tr data-act="act-relax-color"><td>🖍️ Relax &amp; Color Journaling</td><td>Wednesday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-ballet"><td>🩰 Ballet (BodyTree)</td><td>Wednesday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-paid">Paid</span></td></tr>
           <tr data-act="act-lego-club"><td>🧱 LEGO Club</td><td>Wednesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+          <tr data-act="act-arabic-read-aloud"><td>📜 Arabic Read Aloud Club (Short Stories)</td><td>Wednesday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-power-up"><td>🔋 Power-Up with Affirmations</td><td>Thursday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-drawing"><td>✍️ Drawing &amp; Coloring Practice</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-playground"><td>🛝 Playground Games</td><td>Thursday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-free">Free</span></td></tr>
@@ -881,6 +978,7 @@ footer strong{color:#fff}
           <tr data-act="act-drawing"><td>✍️ Drawing &amp; Coloring Practice</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-playground"><td>🛝 Playground Games</td><td>Thursday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-intro-chess"><td>♟️ Intro to Chess</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+          <tr data-act="act-elem-musical"><td>🎭 Elementary Musical Play</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <!-- ADD MORE G3-G5 SPRING ACTIVITIES HERE -->
         </tbody>
       </table>
@@ -904,7 +1002,7 @@ footer strong{color:#fff}
           <tr data-act="act-power-up"><td>🔋 Power-Up with Affirmations</td><td>Thursday</td><td><span class="type-dot type-wellness"></span>Reflective &amp; Wellness</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-drawing"><td>✍️ Drawing &amp; Coloring Practice</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <tr data-act="act-playground"><td>🛝 Playground Games</td><td>Thursday</td><td><span class="type-dot type-athletic"></span>Athletics &amp; Movement</td><td><span class="badge-free">Free</span></td></tr>
-          <tr data-act="act-intro-chess"><td>♟️ Intro to Chess</td><td>Thursday</td><td><span class="type-dot type-academic"></span>Academics &amp; Enrichment</td><td><span class="badge-free">Free</span></td></tr>
+          <tr data-act="act-ms-musical"><td>🎭 Middle School Musical Play</td><td>Thursday</td><td><span class="type-dot type-arts"></span>Arts &amp; Creativity</td><td><span class="badge-free">Free</span></td></tr>
           <!-- ADD MORE MS/HS SPRING ACTIVITIES HERE -->
         </tbody>
       </table>
@@ -1497,6 +1595,106 @@ footer strong{color:#fff}
       <div class="dc-goals">🎯 Build Environmental Awareness · Encourage Leadership · Promote Sustainable Practices</div>
     </div>
 
+    <div class="dir-card ac" id="act-arabic-lang-ms" data-cat="academic" data-name="arabic language foundation club middle school grammar basics proficiency" data-grades="G6–G8" data-day="Tuesday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Build your Arabic foundation, one lesson at a time!">
+      <div class="dc-icon">🔤</div>
+      <div class="dc-name">Arabic Language Foundation Club (Middle School)</div>
+      <div class="dc-meta">
+        <span class="meta-tag">📚 Academic</span><span class="meta-tag">G6–G8</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students build essential Arabic language skills through grammar, vocabulary, and conversation practice in a supportive, beginner-friendly environment.</div>
+      <div class="dc-goals">🎯 Strengthen Grammar Skills · Build Vocabulary · Improve Conversational Arabic</div>
+    </div>
+
+    <div class="dir-card ac" id="act-arabic-lang-hs" data-cat="academic" data-name="arabic language foundation club high school grammar basics proficiency" data-grades="G9–G12" data-day="Wednesday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Build your Arabic foundation, one lesson at a time!">
+      <div class="dc-icon">🔤</div>
+      <div class="dc-name">Arabic Language Foundation Club (High School)</div>
+      <div class="dc-meta">
+        <span class="meta-tag">📚 Academic</span><span class="meta-tag">G9–G12</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students develop foundational Arabic language proficiency through grammar instruction, vocabulary building, and practical conversation tailored to high school learners.</div>
+      <div class="dc-goals">🎯 Strengthen Grammar Skills · Build Vocabulary · Improve Conversational Arabic</div>
+    </div>
+
+    <div class="dir-card ac" id="act-arabic-spelling-mshs" data-cat="academic" data-name="arabic spelling bee middle high school vocabulary language" data-grades="G6–G12" data-day="Thursday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Compete, spell, and master Arabic vocabulary!">
+      <div class="dc-icon">🐝</div>
+      <div class="dc-name">Arabic Spelling Bee</div>
+      <div class="dc-meta">
+        <span class="meta-tag">📚 Academic</span><span class="meta-tag">G6–G12</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students test and sharpen their Arabic spelling and vocabulary skills through friendly competition, building confidence and language mastery.</div>
+      <div class="dc-goals">🎯 Improve Spelling Accuracy · Expand Vocabulary · Build Confidence</div>
+    </div>
+
+    <div class="dir-card ac" id="act-arabic-spelling-elem" data-cat="academic" data-name="arabic spelling bee elementary vocabulary language g3 g5" data-grades="G3–G5" data-day="Thursday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Compete, spell, and master Arabic vocabulary!">
+      <div class="dc-icon">🐝</div>
+      <div class="dc-name">Arabic Spelling Bee (Elementary)</div>
+      <div class="dc-meta">
+        <span class="meta-tag">📚 Academic</span><span class="meta-tag">G3–G5</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Young learners build Arabic vocabulary and spelling skills through fun, competitive rounds designed to boost language confidence.</div>
+      <div class="dc-goals">🎯 Improve Spelling Accuracy · Expand Vocabulary · Build Confidence</div>
+    </div>
+
+    <div class="dir-card ac" id="act-arabic-read-aloud" data-cat="academic" data-name="arabic read aloud club short stories kg2 g2 language reading" data-grades="KG2–G2" data-day="Wednesday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Discover the magic of Arabic storytelling!">
+      <div class="dc-icon">📜</div>
+      <div class="dc-name">Arabic Read Aloud Club (Short Stories)</div>
+      <div class="dc-meta">
+        <span class="meta-tag">📚 Academic</span><span class="meta-tag">KG2–G2</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Young students enjoy short Arabic stories read aloud, building listening skills, vocabulary, and a love of the Arabic language.</div>
+      <div class="dc-goals">🎯 Build Listening Skills · Expand Vocabulary · Foster Love of Reading</div>
+    </div>
+
+    <!-- ── ARTS ────────────────────── -->
+    <div class="dir-card arc" id="act-ms-musical" data-cat="arts" data-name="middle school musical play theatre performance g6 g8" data-grades="G6–G8" data-day="Thursday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Take the stage and shine in this year's musical!">
+      <div class="dc-icon">🎭</div>
+      <div class="dc-name">Middle School Musical Play</div>
+      <div class="dc-meta">
+        <span class="meta-tag">🎨 Arts</span><span class="meta-tag">G6–G8</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students rehearse and perform in a full musical production, building confidence on stage through singing, acting, and teamwork.</div>
+      <div class="dc-goals">🎯 Build Performance Confidence · Develop Teamwork · Explore Musical Theatre</div>
+    </div>
+
+    <div class="dir-card arc" id="act-elem-musical" data-cat="arts" data-name="elementary musical play theatre performance g3 g5" data-grades="G3–G5" data-day="Thursday" data-instructor="AISA Staff" data-fee="free" data-why="Take the stage and shine in this year's musical!">
+      <div class="dc-icon">🎭</div>
+      <div class="dc-name">Elementary Musical Play</div>
+      <div class="dc-meta">
+        <span class="meta-tag">🎨 Arts</span><span class="meta-tag">G3–G5</span>
+        <span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students rehearse and perform in a musical production, developing confidence, teamwork, and a love for the performing arts.</div>
+      <div class="dc-goals">🎯 Build Performance Confidence · Develop Teamwork · Explore Musical Theatre</div>
+    </div>
+
+    <div class="dir-card arc" id="act-arabic-hair-dance" data-cat="arts" data-name="arabic hair dance club girls national day assembly culture middle high school" data-grades="G6–G12" data-day="Tuesday" data-cap="15" data-instructor="AISA Staff" data-fee="free" data-why="Celebrate Emirati culture and shine on stage at the National Day Assembly!">
+      <div class="dc-icon">👯‍♀️</div>
+      <div class="dc-name">Arabic Hair Dance Club (Girls Only)</div>
+      <div class="dc-meta">
+        <span class="meta-tag">🎨 Arts</span><span class="meta-tag">G6–G12</span>
+        <span class="meta-tag">Cap: 15</span><span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students learn and perform traditional Khaleeji hair dance, with selected participants representing AISA at the National Day Assembly.</div>
+      <div class="dc-goals">🎯 Learn Traditional Dance · Build Performance Skills · Celebrate Emirati Culture</div>
+    </div>
+
+    <div class="dir-card arc" id="act-stuco" data-cat="arts" data-name="student council stuco club leadership g3 g5" data-grades="G3–G5" data-day="Thursday" data-instructor="AISA Staff" data-fee="free" data-why="Lead, plan, and make a difference in your school community!">
+      <div class="dc-icon">🗳️</div>
+      <div class="dc-name">Student Council (StuCo Club)</div>
+      <div class="dc-meta">
+        <span class="meta-tag">🎨 Arts</span><span class="meta-tag">G3–G5</span>
+        <span class="badge-free">Free</span>
+      </div>
+      <div class="dc-desc">Students develop leadership skills by representing their peers, planning school events, and contributing ideas to improve their school community.</div>
+      <div class="dc-goals">🎯 Develop Leadership Skills · Build Communication Skills · Contribute to School Community</div>
+    </div>
+
     <!-- ADD MORE DIRECTORY CARDS HERE — copy the template above -->
 
   </div><!-- /dirGrid -->
@@ -1600,6 +1798,90 @@ footer strong{color:#fff}
 </div>
 
 <!-- ═══════════════════════════════════════
+     REGISTER & CALENDARS
+═══════════════════════════════════════ -->
+<section class="section" id="register">
+  <h2 class="section-title">📋 Register <span>&amp; Calendars</span></h2>
+  <div class="divider"></div>
+  <p class="section-sub">How to sign up and key dates to know across all three terms.</p>
+
+  <!-- Registration -->
+  <div style="background:var(--light);border-radius:16px;padding:28px 32px;margin-bottom:40px">
+    <h3 style="font-size:1.1rem;color:var(--navy);margin-bottom:16px;font-family:'Montserrat',sans-serif;font-weight:800">🖊️ How to Register</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+      <div style="background:#fff;border-radius:12px;padding:20px;border-left:4px solid var(--blue)">
+        <div style="font-size:1.4rem;margin-bottom:8px">📧</div>
+        <div style="font-weight:800;color:var(--navy);margin-bottom:6px">Via Email</div>
+        <div style="font-size:.83rem;color:var(--muted)">Follow the registration link shared to your email at the start of each term.</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:20px;border-left:4px solid var(--orange)">
+        <div style="font-size:1.4rem;margin-bottom:8px">📱</div>
+        <div style="font-weight:800;color:var(--navy);margin-bottom:6px">QR Code</div>
+        <div style="font-size:.83rem;color:var(--muted)">Scan the QR code provided in school communications to access the registration form.</div>
+      </div>
+      <div style="background:#fff;border-radius:12px;padding:20px;border-left:4px solid var(--green)">
+        <div style="font-size:1.4rem;margin-bottom:8px">📞</div>
+        <div style="font-weight:800;color:var(--navy);margin-bottom:6px">Contact Us</div>
+        <div style="font-size:.83rem;color:var(--muted)">Call <a href="tel:+97124444333" style="color:var(--blue);font-weight:700">+971 2 444 4333</a> or email <a href="mailto:attendance@aisa.sch.ae" style="color:var(--blue);font-weight:700">attendance@aisa.sch.ae</a></div>
+      </div>
+    </div>
+    <div class="warning-box" style="margin-top:16px">⚠️ <div>Registration is required for all activities — including free ones. Some paid activities require full payment upon registration. A Welcome Letter from the activity coordinator will include detailed instructions.</div></div>
+  </div>
+
+  <!-- Calendar of No-ASA Dates -->
+  <h3 style="font-size:1.1rem;color:var(--navy);margin-bottom:16px;font-family:'Montserrat',sans-serif;font-weight:800">📅 No-ASA Dates by Term</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+
+    <!-- Autumn -->
+    <div style="border-radius:14px;overflow:hidden;border:2px solid #c8d8f8">
+      <div style="background:var(--navy);color:#fff;padding:12px 18px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem">
+        🍂 Autumn Term
+      </div>
+      <div style="padding:16px 18px;background:#fff">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="background:#e8f0ff;color:var(--navy);font-weight:800;font-size:.75rem;padding:3px 9px;border-radius:6px;white-space:nowrap">Oct 19 &amp; 20</span>
+            <span style="font-size:.83rem;color:var(--muted)">Professional Development — No School for Students</span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="background:#e8f0ff;color:var(--navy);font-weight:800;font-size:.75rem;padding:3px 9px;border-radius:6px;white-space:nowrap">Nov 9</span>
+            <span style="font-size:.83rem;color:var(--muted)">Parent-Teacher Conferences</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winter -->
+    <div style="border-radius:14px;overflow:hidden;border:2px solid #c8d8f8">
+      <div style="background:var(--navy);color:#fff;padding:12px 18px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem">
+        ❄️ Winter Term
+      </div>
+      <div style="padding:16px 18px;background:#fff">
+        <div style="font-size:.83rem;color:var(--muted);font-style:italic">No No-ASA dates currently scheduled.</div>
+      </div>
+    </div>
+
+    <!-- Spring -->
+    <div style="border-radius:14px;overflow:hidden;border:2px solid #c8d8f8">
+      <div style="background:var(--navy);color:#fff;padding:12px 18px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:.95rem">
+        🌸 Spring Term
+      </div>
+      <div style="padding:16px 18px;background:#fff">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <span style="background:#e8f0ff;color:var(--navy);font-weight:800;font-size:.75rem;padding:3px 9px;border-radius:6px;white-space:nowrap">May 3</span>
+            <span style="font-size:.83rem;color:var(--muted)">Parent-Teacher Conferences</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="warning-box" style="margin-top:24px">⚠️ <div>All schedules are subject to change based on decisions made by the UAE Government, ADEK, and School Administration. Updates will be communicated via email through Mograsys.</div></div>
+</section>
+
+<!-- ═══════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════ -->
 <footer>
@@ -1628,6 +1910,27 @@ footer strong{color:#fff}
 </div>
 
 <!-- ═══════════════════════════════════════
+     LEO CHATBOT WIDGET
+═══════════════════════════════════════ -->
+<div id="leo-bubble" role="dialog" aria-label="Leo ASA Assistant">
+  <div id="leo-head">
+    <div class="leo-avatar">🦁</div>
+    <div class="leo-info">
+      <div class="leo-name">Leo</div>
+      <div class="leo-status">AISA ASA Assistant · Always here to help!</div>
+    </div>
+    <button id="leo-close" onclick="leoToggle()" aria-label="Close">✕</button>
+  </div>
+  <div id="leo-messages"></div>
+  <div id="leo-footer">
+    <input id="leo-input" type="text" placeholder="Ask me anything about ASAs…" autocomplete="off"
+      onkeydown="if(event.key==='Enter')leoSend()"/>
+    <button id="leo-send" onclick="leoSend()" aria-label="Send">➤</button>
+  </div>
+</div>
+<button id="leo-btn" onclick="leoToggle()" aria-label="Open Leo ASA Assistant" class="no-print">🦁</button>
+
+<!-- ═══════════════════════════════════════
      JS
 ═══════════════════════════════════════ -->
 <script>
@@ -1640,7 +1943,7 @@ document.querySelectorAll('.faq-q').forEach(q=>{
 });
 
 // ── Active nav tab on scroll ──
-const sections=['top','welcome','categories','process','autumn','winter','spring','directory','faqs'];
+const sections=['top','welcome','categories','process','autumn','winter','spring','directory','faqs','register'];
 const navLinks=document.querySelectorAll('.nav-tabs a');
 window.addEventListener('scroll',()=>{
   let current='';
@@ -1747,6 +2050,211 @@ document.querySelectorAll('table.asa-table tbody tr[data-act]').forEach(row=>{
   row.style.cursor='pointer';
   row.addEventListener('click',()=>openAct(row.dataset.act));
 });
+
+// ══════════════════════════════════════════════════════════
+//  LEO — AISA ASA ASSISTANT
+// ══════════════════════════════════════════════════════════
+(function(){
+  let leoOpen=false;
+
+  // ── Knowledge base ──
+  const INTENTS=[
+    {
+      keys:['register','sign up','join','enrol','enroll','how do i sign','how to sign'],
+      reply:'To join an ASA, follow the registration link sent to your email at the start of each term, or scan the QR code in school communications. Registration is required even for free activities! 📋'
+    },
+    {
+      keys:['fee','cost','paid','free','price','charge','how much'],
+      reply:'Some ASAs are free of charge — registration is still required. Others require full payment upon signing up. Every activity on the schedule is labelled <strong>Free</strong> or <strong>Paid</strong> so you always know upfront. 💰'
+    },
+    {
+      keys:['time','timing','when','start','finish','end','hour','15:00','16:00','3pm','4pm','afternoon'],
+      reply:'ASAs run <strong>15:00–16:00</strong> (3 pm – 4 pm), Monday to Thursday. Students are dismissed at 16:00 from their ASA location. Please be prompt for pick-up at Gate 4! ⏰'
+    },
+    {
+      keys:['pick up','pickup','gate','collect','dismissal','dismiss'],
+      reply:'Students are dismissed from their ASA location at <strong>16:00</strong>. Please collect your child from <strong>Gate 4</strong>. Prompt pick-up is appreciated! 🚗'
+    },
+    {
+      keys:['absent','miss','cannot attend','can\'t attend','not coming','sick'],
+      reply:'If your child cannot attend a session, please notify the school by email or phone:\n📧 Elementary: attendance@aisa.sch.ae\n📧 Secondary: secondaryattendance@aisa.sch.ae\n📞 +971 2 4444 333'
+    },
+    {
+      keys:['transport','bus','off campus','bowling','equestrian','cubs'],
+      reply:'Transportation is available for selected off-campus activities like Bowling, Equestrian Club, and CUBS Sports. Parents are asked to collect their children from the AISA campus after the activity. 🚌'
+    },
+    {
+      keys:['no asa','no school','cancelled','cancel','oct 19','oct 20','october 19','october 20','nov 9','november 9','may 3'],
+      reply:'Here are the <strong>No-ASA dates</strong> for this year:\n\n🍂 <strong>Autumn Term</strong>\n• Oct 19 &amp; 20 — Professional Development (No School for Students)\n• Nov 9 — Parent-Teacher Conferences\n\n🌸 <strong>Spring Term</strong>\n• May 3 — Parent-Teacher Conferences\n\nYou can also see these in the <a href="#register" onclick="leoToggle()">Register &amp; Calendars</a> section!'
+    },
+    {
+      keys:['autumn term','autumn asa','fall term'],
+      reply:'The <strong>Autumn Term</strong> runs with ASAs on Monday–Thursday. Key no-ASA dates: Oct 19 &amp; 20 (Professional Development) and Nov 9 (Parent-Teacher Conferences). Click <a href="#autumn" onclick="leoToggle()">Autumn Term</a> to see the full schedule! 🍂'
+    },
+    {
+      keys:['winter term','winter asa'],
+      reply:'The <strong>Winter Term</strong> has a wide range of ASAs across all grade levels. No no-ASA dates are currently scheduled for Winter Term. Click <a href="#winter" onclick="leoToggle()">Winter Term</a> to explore activities! ❄️'
+    },
+    {
+      keys:['spring term','spring asa'],
+      reply:'The <strong>Spring Term</strong> has a great mix of ASAs. One no-ASA date: May 3 (Parent-Teacher Conferences). Click <a href="#spring" onclick="leoToggle()">Spring Term</a> to see the full schedule! 🌸'
+    },
+    {
+      keys:['kg1','kg 1','kindergarten 1'],
+      reply:'KG1 students have ASAs across all three terms — including Ballet, Football, Intro to Music, and the Little Athletic Program (Winter/Spring). All activities run 15:00–16:00! 🎒'
+    },
+    {
+      keys:['kg2','grade 1','grade 2','elementary','lower school'],
+      reply:'KG2–G2 students have a rich selection including Swimming, Ballet, Football, Chess, Quran Club, Basketball, and more. Check the <a href="#autumn" onclick="leoToggle()">term schedules</a> for full details! 📚'
+    },
+    {
+      keys:['grade 3','grade 4','grade 5','g3','g4','g5','upper elementary'],
+      reply:'G3–G5 students enjoy activities like Football, Basketball, Robotics Club, Creative Writing, Ballet, Gardening, and more — spread across all three terms. Check the <a href="#autumn" onclick="leoToggle()">schedule tabs</a>! 🏫'
+    },
+    {
+      keys:['middle school','high school','secondary','ms','hs','grade 6','grade 7','grade 8','grade 9','grade 10','grade 11','grade 12'],
+      reply:'Middle and High School students can join Study Halls (IB Math, IB English, Business), Sustainability Club, Chess Club, Basketball, Robotics, HipHop Dance, Greenhouse Care, and more. See the <a href="#autumn" onclick="leoToggle()">term sections</a>! 🎓'
+    },
+    {
+      keys:['football','soccer','pass'],
+      reply:'⚽ <strong>Football Training (PASS)</strong> is available for all grade levels across all three terms. It runs on Mondays or Tuesdays depending on the grade group. It is a paid activity.'
+    },
+    {
+      keys:['swim','swimming','pool','learn to swim'],
+      reply:'🏊 <strong>Learn To Swim</strong> is a free activity available for KG2–G5 students in Autumn and Winter terms, and as a Splash Day in Spring. A great way to build water confidence!'
+    },
+    {
+      keys:['ballet','dance','bodytree'],
+      reply:'🩰 <strong>Ballet (BodyTree)</strong> is available across all grade levels in all three terms, typically on Wednesdays (and Mondays for KG1). It is a paid activity and open to beginners and beyond!'
+    },
+    {
+      keys:['chess','strategy'],
+      reply:'♟️ <strong>Intro to Chess</strong> is free for KG2–G5 on Thursdays. Middle/High School students can join the <strong>Chess Club</strong> (also free) on Wednesdays in Winter. A great way to sharpen strategic thinking!'
+    },
+    {
+      keys:['quran','arabic','islamic'],
+      reply:'🌙 <strong>Quran Club</strong> is available for Elementary students (all grades) on Tuesdays and for MS/HS students (separate Female/Male sessions) in Winter and Spring terms. It is a free activity.'
+    },
+    {
+      keys:['robotics','coding','stem','robot'],
+      reply:'🤖 <strong>Robotics Club</strong> is available for G3–G5 students on Mondays during the Winter Term (paid). MS/HS students can join <strong>IB STEM Support Club</strong> or the <strong>STEM Club</strong> (both free).'
+    },
+    {
+      keys:['equestrian','horse','riding','horseback'],
+      reply:'🏇 <strong>Equestrian Club</strong> is a paid activity available for KG2–G12 across multiple terms. Transportation is provided to the equestrian centre and students are collected from campus afterward.'
+    },
+    {
+      keys:['basketball','gametime'],
+      reply:'🏀 <strong>Basketball Training (GameTime)</strong> is available for KG2–G12 students on Tuesdays. It is a paid activity running in all three terms — a fantastic way to develop skills and teamwork!'
+    },
+    {
+      keys:['contact','email','phone','reach','staff','coordinator'],
+      reply:'You can reach the Athletics &amp; Activities team here:\n\n👤 Mr. Luka Zischka — lzischka@aisa.sch.ae\n👤 Ms. Ledinia Cristobal — lcristobal@aisa.sch.ae\n📞 +971 2 444 4333\n📧 attendance@aisa.sch.ae\n🌐 aisa.sch.ae'
+    },
+    {
+      keys:['safety','safe','ratio','nurse','vet'],
+      reply:'Student safety is a top priority at AISA:\n• Max 15 students per supervising adult\n• All personnel vetted per ADEK requirements\n• Staff trained in health &amp; safety protocols\n• On-site nurses available\n• Parental consent required before participation 🏥'
+    },
+    {
+      keys:['attendance','mograsys','notify','notification'],
+      reply:'Attendance is taken on <strong>Mograsys</strong> by the ASA instructor at the start of each session. You will receive email notifications confirming whether your child attended or missed a session. 📩'
+    },
+    {
+      keys:['how long','weeks','duration','how many weeks'],
+      reply:'Most ASAs are scheduled to run for approximately <strong>8 weeks</strong> per term. Any changes will be communicated to families in advance via email. 📅'
+    },
+    {
+      keys:['categories','type','kind','wellness','academic','athletic','arts','creativity'],
+      reply:'AISA ASAs are organised into four exciting categories:\n\n🌿 <strong>Reflective &amp; Wellness</strong> — Quran Club, Sustainability, Greenhouse Care…\n📚 <strong>Academics &amp; Enrichment</strong> — Chess, Robotics, Study Halls…\n⚽ <strong>Athletics &amp; Movement</strong> — Football, Swimming, Basketball…\n🎨 <strong>Arts &amp; Creativity</strong> — Ballet, Guitar, Creative Writing…'
+    },
+    {
+      keys:['directory','list','all activities','full list'],
+      reply:'You can browse the full list of activities with detailed descriptions in the <a href="#directory" onclick="leoToggle()">Directory</a> section. Use the search bar or filter by category to find the perfect ASA! 🗂️'
+    },
+    {
+      keys:['process','how does it work','elementary process','secondary process'],
+      reply:'<strong>Elementary:</strong> After school (14:50) → meet on the Lower Basketball Court → attendance → ASA 15:00–16:00 → pick-up at Gate 4.\n\n<strong>Secondary:</strong> After school (14:50) → head to assigned ASA location → attendance → ASA 15:00–16:00 → pick-up at Gate 4. 🏫'
+    },
+    {
+      keys:['hi','hello','hey','good morning','good afternoon','howdy','hiya'],
+      reply:`Hi there! 🦁 I'm <strong>Leo</strong>, your AISA ASA guide! I can help you with:\n\n• How to register for activities\n• Schedule & term dates\n• No-ASA days\n• Activity details & fees\n• Contact information\n\nWhat would you like to know?`,
+      isGreeting:true
+    },
+  ];
+
+  const SUGGESTIONS=['How do I register?','What are the no-ASA dates?','What time do ASAs run?','Tell me about Football','Who do I contact?'];
+
+  function leoReply(text){
+    const lower=text.toLowerCase();
+    for(const intent of INTENTS){
+      if(intent.keys.some(k=>lower.includes(k))){
+        return intent.reply;
+      }
+    }
+    return `Hmm, I'm not sure about that one! 🦁 Try asking about:\n\n• Registration & fees\n• Term dates & no-ASA days\n• Activity schedules\n• Specific ASAs (Football, Ballet, Chess…)\n• Contact information\n\nOr visit the <a href="#faqs" onclick="leoToggle()">FAQs</a> section for more details!`;
+  }
+
+  function leoAddMsg(text,who){
+    const msgs=document.getElementById('leo-messages');
+    const wrap=document.createElement('div');
+    if(who==='leo'){
+      wrap.className='leo-msg-row';
+      wrap.innerHTML=`<span class="leo-av">🦁</span><div class="leo-msg leo">${text.replace(/\n/g,'<br/>')}</div>`;
+    } else {
+      wrap.innerHTML=`<div class="leo-msg user">${text}</div>`;
+      wrap.style.display='flex';
+      wrap.style.justifyContent='flex-end';
+    }
+    msgs.appendChild(wrap);
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+
+  function leoAddSuggestions(){
+    const msgs=document.getElementById('leo-messages');
+    const row=document.createElement('div');
+    row.className='leo-chips';
+    row.id='leo-suggest';
+    SUGGESTIONS.forEach(s=>{
+      const chip=document.createElement('button');
+      chip.className='leo-chip';
+      chip.textContent=s;
+      chip.onclick=()=>{
+        const el=document.getElementById('leo-suggest');
+        if(el)el.remove();
+        leoAddMsg(s,'user');
+        setTimeout(()=>leoAddMsg(leoReply(s),'leo'),350);
+      };
+      row.appendChild(chip);
+    });
+    msgs.appendChild(row);
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+
+  window.leoToggle=function(){
+    leoOpen=!leoOpen;
+    const bubble=document.getElementById('leo-bubble');
+    bubble.classList.toggle('open',leoOpen);
+    if(leoOpen){
+      const msgs=document.getElementById('leo-messages');
+      if(!msgs.hasChildNodes()){
+        leoAddMsg(`Hi there! 🦁 I'm <strong>Leo</strong>, your AISA ASA assistant!<br/>What would you like to know today?`,'leo');
+        setTimeout(leoAddSuggestions,400);
+      }
+      setTimeout(()=>document.getElementById('leo-input').focus(),200);
+    }
+  };
+
+  window.leoSend=function(){
+    const input=document.getElementById('leo-input');
+    const text=input.value.trim();
+    if(!text)return;
+    input.value='';
+    const suggest=document.getElementById('leo-suggest');
+    if(suggest)suggest.remove();
+    leoAddMsg(text,'user');
+    setTimeout(()=>leoAddMsg(leoReply(text),'leo'),400);
+  };
+})();
 </script>
 
 </body>
